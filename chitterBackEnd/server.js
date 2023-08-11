@@ -12,6 +12,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+// Routes
+
 // Mongoose setup
 const main = async () => {
   console.log(`Connecting to: ${process.env.DB_URI}`);
