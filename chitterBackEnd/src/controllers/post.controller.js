@@ -7,10 +7,11 @@ export const postPeepController = async (req, res) => {
     return res.status(422).send(`Posting new peep failed`);
   }
   try {
-    const peep = await postPeepService(req.body);
-    res.status(201).json({ peep });
+    const newPeep = await postPeepService(req.body);
+    res.status(201).json({ newPeep });
   } catch (error) {
     console.log(error);
-    res.status(400).send(`Posting new peep failed`);
+    // res.status(400).send(`Posting new peep failed`);
+    res.status(409).json({ message: error.message });
   }
 };

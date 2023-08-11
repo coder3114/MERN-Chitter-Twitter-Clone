@@ -1,21 +1,23 @@
 import mongoose from "mongoose";
 
 const peepSchema = mongoose.Schema({
-  user_id: {
+  userId: {
     type: String,
     required: true,
   },
-  description: {
+  peepDescription: {
     type: String,
     required: true,
     trim: true,
     maxlength: 280,
   },
-  post_time: {
+  peepTimePosted: {
     type: Date,
     default: Date.now,
+    required: true,
   },
 });
 
 const Peep = mongoose.model("Peep", peepSchema);
+
 export default Peep;
