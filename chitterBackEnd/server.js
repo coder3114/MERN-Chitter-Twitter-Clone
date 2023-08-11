@@ -4,8 +4,9 @@ import express from "express";
 import mongoose from "mongoose";
 import HTTPS from "https";
 import { postPeep } from "./src/routes/post.route.js";
-import { peeps } from "./test/testData/sampleData.js";
+import { peeps, users } from "./test/testData/sampleData.js";
 import Peep from "./src/models/Peep.js";
+import User from "./src/models/User.js";
 
 dotenv.config({ path: ".env" });
 
@@ -32,6 +33,7 @@ const server = HTTPS.createServer(app).listen(process.env.PORT, () => {
   const SERVERPORT = server.address().port;
   console.log(`Server is running on https://${SERVERHOST}:${SERVERPORT}`);
   Peep.insertMany(peeps);
+  User.insertMany(users);
 });
 
 export default server;
