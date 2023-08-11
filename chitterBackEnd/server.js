@@ -1,28 +1,29 @@
 import cors from "cors";
-import bodyParser from "body-parser";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import HTTPS from "https";
+import { postPeep } from "./src/routes/post.route.js";
 
 dotenv.config({ path: ".env" });
 
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
 
 // Routes
+app.use(express.json());
+app.use(cors());
+app.use(`/post`, postPeep);
 
 // Mongoose setup
 const main = async () => {
   console.log(`Connecting to: ${process.env.DB_URI}`);
   await mongoose.connect(process.env.DB_URI);
+  console.log(`Connected to @ ${process.env.DB_URI}`);
 };
 
-main()
-  .then(`Connected to database`)
-  .catch((error) => console.log(`${error} did not connect`));
+main().catch((error) => console.log(`${error} did not connect`));
 
 const server = HTTPS.createServer(app).listen(process.env.PORT, () => {
   const SERVERHOST = server.address().address;

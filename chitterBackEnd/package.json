@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express-validator": "^7.0.1",
     "mongodb": "^5.7.0"
   }
 }
