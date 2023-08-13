@@ -13,9 +13,7 @@ const PostPeep = ({ submitAction }) => {
 
   return (
     <>
-      <div className="addEditPeep row">
-        <h3>Post a Peep</h3>
-      </div>
+      <div className="addEditPeep row"></div>
       <PostPeepForm submitAction={submitPeep} />
     </>
   );

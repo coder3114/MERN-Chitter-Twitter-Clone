@@ -14,27 +14,39 @@ const PostPeepForm = ({ submitAction }) => {
   };
 
   return (
-    <form onSubmit={handlePeepSubmit}>
-      <div className="post-peep-form">
-        <input
-          type="text"
-          name="peepText"
-          value={peepText}
-          placeholder="What's happening..."
-          style={{ flex: 1, border: "none", minHeight: "50px" }}
-          onChange={(event) => setPeepText(event.target.value)}
-        />
-        <br />
-        <label title="peepTimePosted">
-          Created on:&nbsp;
-          <DateCreated
-            updateDateCreated={(dateCreated) => setPeepTimePosted(dateCreated)}
-          />
-        </label>
-        <br />
-        <input type="submit" value="Post" disabled={!peepText} />
+    <div className="container mt-5">
+      <div className="card col-md-6">
+        <div className="card-body">
+          <form onSubmit={handlePeepSubmit}>
+            <div className="post-peep-form ">
+              <input
+                className="form-control"
+                type="text"
+                name="peepText"
+                value={peepText}
+                placeholder="What's happening..."
+                onChange={(event) => setPeepText(event.target.value)}
+              />
+            </div>
+            <div className="card-text mt-2 mb-2">
+              <label title="peepTimePosted">
+                <DateCreated
+                  updateDateCreated={(dateCreated) =>
+                    setPeepTimePosted(dateCreated)
+                  }
+                />
+              </label>
+            </div>
+            <input
+              className="btn btn-primary btn-sm"
+              type="submit"
+              value="Post"
+              disabled={!peepText}
+            />
+          </form>
+        </div>
       </div>
-    </form>
+    </div>
   );
 };
 
