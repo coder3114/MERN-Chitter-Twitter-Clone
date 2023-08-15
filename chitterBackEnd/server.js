@@ -23,7 +23,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use(`/post`, PostRoute);
+app.use(`/`, PostRoute);
 
 const main = async () => {
   console.log(`Connecting to DB @ ${process.env.DB_URI}`);
