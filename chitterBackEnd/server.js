@@ -3,41 +3,40 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import HTTPS from "https";
-import { postPeep } from "./src/routes/post.route.js";
-import { peeps, users } from "./test/testData/sampleData.js";
-import Peep from "./src/models/Peep.js";
-import User from "./src/models/User.js";
+import bodyParser from "body-parser";
 
-dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
+import { PostRoute } from "./src/routes/post.route.js";
 
-const port = process.env.PORT;
-const host = process.env.HOST;
+import { peeps, users } from "./sampleData.js";
+import Peep from "./src/models/PeepModel.js";
+import User from "./src/models/UserModel.js";
+
+dotenv.config({
+  path: `.env${process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ""}`,
+});
+
+const PORT = process.env.PORT;
+const HOST = process.env.HOST;
 
 const app = express();
 
 app.use(cors());
+app.use(bodyParser.json());
 
-// Routes
-app.use(express.json());
-app.use(cors());
+app.use(`/post`, PostRoute);
 
-app.use(`/post`, postPeep);
-
-// Mongoose setup
 const main = async () => {
   console.log(`Connecting to DB @ ${process.env.DB_URI}`);
   await mongoose.connect(process.env.DB_URI);
   console.log(`Connected to DB @ ${process.env.DB_URI}`);
 };
 
-main().catch((error) => console.log(`${error} did not connect`));
+main().catch((err) => console.log(err));
 
-const server = HTTPS.createServer(app).listen(port, host, () => {
+const server = app.listen(PORT, HOST, () => {
   const SERVERHOST = server.address().address;
   const SERVERPORT = server.address().port;
-  console.log(`Server is running on https://${SERVERHOST}:${SERVERPORT}`);
-  // Peep.insertMany(peeps);
-  // User.insertMany(users);
+  console.log(`Server is listening at http://${SERVERHOST}:${SERVERPORT}`);
 });
 
 export default server;

@@ -54,26 +54,43 @@ export const peeps = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: newIds[0],
-    peepDescription: "Hey Everyone, this is my first post!",
+    peepDesc: "Hey Everyone, this is my first post!",
     peepTimePosted: "2023-08-12T00:00:00.000Z",
   },
   {
     _id: new mongoose.Types.ObjectId(),
     userId: newIds[1],
-    peepDescription: "Hi I am happy it's Friday today!",
+    peepDesc: "Hi I am happy it's Friday today!",
     peepTimePosted: "2023-08-11T00:00:00.000Z",
   },
   {
     _id: new mongoose.Types.ObjectId(),
     userId: newIds[2],
-    peepDescription: "Full stack is fun!",
+    peepDesc: "Full stack is fun!",
     peepTimePosted: "2023-08-17T00:00:00.000Z",
   },
   {
     _id: new mongoose.Types.ObjectId(),
     userId: newIds[3],
-    peepDescription:
+    peepDesc:
       "Whether software development is the right career choice for you?",
     peepTimePosted: "2023-08-11T00:00:00.000Z",
   },
 ];
+
+// {
+//   "peeps": [
+//     {
+//       "peepText": "Hey Everyone, this is my first post!",
+//       "peepTimePosted": "2023-08-12T00:00:00.000Z"
+//     },
+//     {
+//       "peepText": "Hi I am happy it's Friday today!",
+//       "peepTimePosted": "2023-08-11T00:00:00.000Z"
+//     },
+//     {
+//       "peepText": "Hi I am a bad example because I am tooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooog!",
+//       "peepTimePosted": "2023-08-17T00:00:00.000Z"
+//     }
+//   ]
+// }
