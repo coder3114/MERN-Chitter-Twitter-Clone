@@ -1,6 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import DateCreated from "./utils/TimePosted.jsx";
+import TimePosted from "./utils/TimePosted.jsx";
 
 const PostPeepForm = ({ submitAction }) => {
   const [peepText, setPeepText] = useState("");
@@ -14,36 +14,40 @@ const PostPeepForm = ({ submitAction }) => {
   };
 
   return (
-    <div className="container mt-5">
-      <div className="card col-md-6">
-        <div className="card-body">
-          <form onSubmit={handlePeepSubmit}>
-            <div className="post-peep-form ">
-              <input
-                className="form-control"
-                type="text"
-                name="peepText"
-                value={peepText}
-                placeholder="What's happening..."
-                onChange={(event) => setPeepText(event.target.value)}
-              />
-            </div>
-            <div className="card-text mt-2 mb-2">
-              <label title="peepTimePosted">
-                <DateCreated
-                  updateDateCreated={(dateCreated) =>
-                    setPeepTimePosted(dateCreated)
-                  }
+    <div className="container mt-5 mb-4">
+      <div className="row justify-content-center ">
+        <div className="card col-md-6">
+          <div className="card-body">
+            <form onSubmit={handlePeepSubmit}>
+              <div className="post-peep-form ">
+                <input
+                  className="form-control"
+                  type="text"
+                  name="peepText"
+                  value={peepText}
+                  placeholder="What's happening..."
+                  onChange={(event) => setPeepText(event.target.value)}
                 />
-              </label>
-            </div>
-            <input
-              className="btn btn-primary btn-sm"
-              type="submit"
-              value="Post"
-              disabled={!peepText}
-            />
-          </form>
+              </div>
+              <div
+                className="card-text mt-2 mb-2 text-muted"
+                style={{ fontSize: 12 }}>
+                <label title="peepTimePosted">
+                  <TimePosted
+                    updateDateCreated={(dateCreated) =>
+                      setPeepTimePosted(dateCreated)
+                    }
+                  />
+                </label>
+                <input
+                  className="btn btn-primary float-right"
+                  type="submit"
+                  value="Post"
+                  disabled={!peepText}
+                />
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -52,6 +56,7 @@ const PostPeepForm = ({ submitAction }) => {
 
 PostPeepForm.propTypes = {
   submitAction: PropTypes.func.isRequired,
+  userId: PropTypes.string.isRequired,
 };
 
 export default PostPeepForm;
