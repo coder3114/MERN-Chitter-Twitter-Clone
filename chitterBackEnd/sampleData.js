@@ -20,8 +20,8 @@ export const users = [
     _id: newIds[1],
     firstName: "Olivia",
     lastName: "Gray",
-    username: "App_Check",
-    email: "olivia.gray.test@mail.com",
+    username: "usernameExisted",
+    email: "testUsernameExist@mail.com",
     password: "P@5mGtR7Qw",
   },
   {
@@ -40,41 +40,40 @@ export const users = [
     email: "noah.morgan.test@mail.com",
     password: "D$8jCx#4Fv",
   },
-  {
-    _id: newIds[4],
-    firstName: "Amy",
-    lastName: "Brooks",
-    username: "foreverSoftware",
-    email: "amy.brooks.test@mail.com",
-    password: "T%2qNsP7Zr",
-  },
+  // {
+  //   _id: newIds[4],
+  //   firstName: "Amy",
+  //   lastName: "Brooks",
+  //   username: "foreverSoftware",
+  //   email: "amy.brooks.test@mail.com",
+  //   password: "T%2qNsP7Zr",
+  // },
 ];
 
 export const peeps = [
   {
     _id: new mongoose.Types.ObjectId(),
     userId: newIds[0],
-    peepDesc: "Hey Everyone, this is my first post!",
-    peepTimePosted: "2023-08-12T00:00:00.000Z",
+    content: "Hey Emma here, this is my first post!",
+    time: "2023-08-12T00:00:00.000Z",
   },
   {
     _id: new mongoose.Types.ObjectId(),
     userId: newIds[1],
-    peepDesc: "Hi I am happy it's Friday today!",
-    peepTimePosted: "2023-08-11T00:00:00.000Z",
+    content: "Hi I am Olivia, I'm happy it's Friday today!",
+    time: "2023-08-11T00:00:00.000Z",
   },
   {
     _id: new mongoose.Types.ObjectId(),
     userId: newIds[2],
-    peepDesc: "Full stack is fun!",
-    peepTimePosted: "2023-08-17T00:00:00.000Z",
+    content: "Full stack is fun! Ava",
+    time: "2023-08-17T00:00:00.000Z",
   },
   {
     _id: new mongoose.Types.ObjectId(),
     userId: newIds[3],
-    peepDesc:
-      "Whether software development is the right career choice for you?",
-    peepTimePosted: "2023-08-11T00:00:00.000Z",
+    content: "Happy coding -- Noah",
+    time: "2023-08-11T00:00:00.000Z",
   },
 ];
 
