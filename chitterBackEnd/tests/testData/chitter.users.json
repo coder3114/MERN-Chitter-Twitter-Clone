@@ -1,0 +1,44 @@
+[{
+  "_id": {
+    "$oid": "64e1dd52a2a47961bdbeb025"
+  },
+  "firstName": "Emma",
+  "lastName": "Parker",
+  "username": "TestBuddy",
+  "email": "emma.parker.test@mail.com",
+  "password": "X#9cFp$2Ks",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64e1dd52a2a47961bdbeb026"
+  },
+  "firstName": "Olivia",
+  "lastName": "Gray",
+  "username": "App_Check",
+  "email": "olivia.gray.test@mail.com",
+  "password": "P@5mGtR7Qw",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64e1dd52a2a47961bdbeb027"
+  },
+  "firstName": "Ava",
+  "lastName": "Cooper",
+  "username": "Bug-Catcher",
+  "email": "ava.cooper.test@mail.com",
+  "password": "B^3hVz*6Ln",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64e1dd52a2a47961bdbeb028"
+  },
+  "firstName": "Noah",
+  "lastName": "Morgan",
+  "username": "likeChitter",
+  "email": "noah.morgan.test@mail.com",
+  "password": "D$8jCx#4Fv",
+  "__v": 0
+}]

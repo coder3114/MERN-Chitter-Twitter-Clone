@@ -5,9 +5,9 @@ import { expect } from "chai";
 import chaiHttp from "chai-http";
 
 import server from "../server.js";
-import testData from "./testData/samplePeeps.js";
+import testData from "./testData/sampleData.js";
 
-const testDataArray = testData.peeps;
+const testPeepsArray = testData.peeps;
 const validationErrorMessage = `Validation failed, please check input!`;
 
 chai.use(chaiHttp);
@@ -24,7 +24,7 @@ describe(`Testing requests on the Peep database`, () => {
       throw new Error();
     }
     try {
-      await Peep.insertMany(testDataArray);
+      await Peep.insertMany(testPeepsArray);
       console.log(`Database populated with test Peeps`);
     } catch (error) {
       console.log(`Error inserting`);
@@ -38,7 +38,7 @@ describe(`Testing requests on the Peep database`, () => {
 
       expect(res).to.have.status(200);
       expect(res.body).to.be.an(`array`);
-      expect(res.body.length).to.equal(testDataArray.length);
+      expect(res.body.length).to.equal(testPeepsArray.length);
     });
 
     it("2 - should return error message if no peep to retrieve", async () => {
