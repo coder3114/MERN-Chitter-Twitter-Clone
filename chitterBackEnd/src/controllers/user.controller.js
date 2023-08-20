@@ -36,3 +36,12 @@ export const registerUser = async (req, res) => {
     res.status(500).json(error);
   }
 };
+
+export const loginUser = async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(422)
+      .json({ message: `Validation failed, please check input!` });
+  }
+};
