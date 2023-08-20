@@ -61,5 +61,35 @@ describe(`Testing requests on the User Login`, () => {
         );
       });
     });
+
+    describe(`Check existing users`, () => {
+      it(`3 - should not register a user if email doesn't exist`, async () => {
+        let user = {
+          email: "nonExisting.test@mail.com",
+          password: "fakePassword",
+        };
+
+        const res = await testServer.post(`/login`).send(user);
+
+        expect(res).to.have.status(401);
+        expect(res).to.have.property(`error`);
+        expect(res.body.message).to.be.eql(
+          `No accounts with this email address!`
+        );
+      });
+
+      it(`4 - should not login a user if email and password don't match`, async () => {
+        let user = {
+          email: "emma.parker.test@mail.com",
+          password: "fakePassword",
+        };
+
+        const res = await testServer.post(`/login`).send(user);
+
+        expect(res).to.have.status(401);
+        expect(res).to.have.property(`error`);
+        expect(res.body.message).to.be.eql(`User password incorrect!`);
+      });
+    });
   });
 });
