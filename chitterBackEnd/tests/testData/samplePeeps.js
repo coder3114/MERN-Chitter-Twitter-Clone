@@ -2,24 +2,24 @@ const testData = {
   peeps: [
     {
       userId: "64dbacfec48fc3b245fd45d8",
-      peepDesc: "Hey Everyone, this is my first post!",
-      peepTimePosted: "2023-08-12T00:00:00.000Z",
+      content: "Hey Everyone, this is my first post!",
+      time: "2023-08-12T00:00:00.000Z",
     },
     {
       userId: "64dbacfec48fc3b245fd45d8",
-      peepDesc: "Hi I am happy it's Friday today!",
-      peepTimePosted: "2023-08-11T00:00:00.000Z",
+      content: "Hi I am happy it's Friday today!",
+      time: "2023-08-11T00:00:00.000Z",
     },
     {
       userId: "64dbacfec48fc3b245fd45d8",
-      peepDesc: "Full stack is fun!",
-      peepTimePosted: "2023-08-17T00:00:00.000Z",
+      content: "Full stack is fun!",
+      time: "2023-08-17T00:00:00.000Z",
     },
     {
       userId: "64dbacfec48fc3b245fd45db",
-      peepDesc:
+      content:
         "Whether software development is the right career choice for you?",
-      peepTimePosted: "2023-08-11T00:00:00.000Z",
+      time: "2023-08-11T00:00:00.000Z",
     },
   ],
 };

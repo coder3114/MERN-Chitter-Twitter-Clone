@@ -1,44 +1,35 @@
-import validationResult from "express-validator";
-import PeepModel from "../models/PeepModel.js";
+import { validationResult } from "express-validator";
+import { postPeepService, getPeepsService } from "../services/posts.service.js";
 
 export const postPeep = async (req, res) => {
-  // const errors = validationResult(req);
-  // if (!errors.isEmpty()) {
-  //   return res.status(422).send(`Posting new peep failed`);
-  // }
-  const newPeep = new PeepModel(req.body);
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res
+      .status(422)
+      .json({ message: `Validation failed, please check input!` });
+  }
   try {
-    await newPeep.save();
-    res.status(201).json(newPeep);
+    const peep = await postPeepService(req.body);
+    res.status(201).json({ peep: peep, message: `Peep post successful` });
   } catch (error) {
-    res.status(500).json(error);
-    // res.status(400).send(`Posting new peep failed`);
-    // res.status(409).json({ message: error.message });
+    res.status(400).json({ message: error.message });
   }
 };
 
-// export const getPeep = async (req, res) => {
-//   const id = req.params.id;
-
-//   try {
-//     const peep = await PeepModel.findById(id);
-//     res.status(200).json(post);
-//   } catch (error) {
-//     res.status(500).json(error);
-//   }
-// };
-
 export const getPeeps = async (req, res) => {
   try {
-    const peeps = await PeepModel.find({});
-    res
-      .status(200)
-      .json(peeps)
-      .sort((a, d) => {
-        return new Date(b.peepTimePosted) - new Date(a.peepTimePosted);
-      });
-    peeps.sort((a, b) => {});
+    const peeps = await getPeepsService();
+    // Sort into reverse chronological order
+    peeps.sort((a, b) => {
+      return b.time - a.time;
+    });
+    if (peeps.length === 0) {
+      return res
+        .status(404)
+        .json({ message: `No peeps to display, start posting!` });
+    }
+    res.status(200).json(peeps);
   } catch (error) {
-    res.status(500).json(error);
+    res.status(400).json({ message: `Unable to retrieve peeps` });
   }
 };
