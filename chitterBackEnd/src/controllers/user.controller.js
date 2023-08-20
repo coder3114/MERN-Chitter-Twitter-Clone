@@ -56,7 +56,11 @@ export const loginUser = async (req, res) => {
       .json({ message: `No accounts with this email address!` });
   }
 
-  if (existingUser.password != password) {
+  if (existingUser.password === password) {
+    res
+      .status(200)
+      .json({ userId: existingUser._id, message: `User login successful` });
+  } else {
     res.status(401).json({ message: `User password incorrect!` });
   }
 };
