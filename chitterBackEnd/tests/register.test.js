@@ -103,8 +103,58 @@ describe(`Testing requests on the User Register`, () => {
       });
     });
 
+    describe(`Check existing users`, () => {
+      it(`6 - should not register a user if username already exists`, async () => {
+        await User.create({
+          firstName: "A",
+          lastName: "B",
+          username: "usernameExisted",
+          email: "testUsernameExist@mail.com",
+          password: "password123",
+        });
+
+        let newUser = {
+          firstName: "firstName",
+          lastName: "lastName",
+          username: "usernameExisted",
+          email: "testing@mail.com",
+          password: "password123",
+        };
+
+        const res = await testServer.post(`/register`).send(newUser);
+
+        expect(res).to.have.status(400);
+        expect(res).to.have.property(`error`);
+        expect(res.body.message).to.be.eql(`Username is already in use!`);
+      });
+
+      it(`7 - should not register a user if email already exists`, async () => {
+        await User.create({
+          firstName: "A",
+          lastName: "B",
+          username: "emailExisted",
+          email: "olivia.gray.test@mail.com",
+          password: "password123",
+        });
+
+        let newUser = {
+          firstName: "firstName",
+          lastName: "lastName",
+          username: "username",
+          email: "olivia.gray.test@mail.com",
+          password: "password123",
+        };
+
+        const res = await testServer.post(`/register`).send(newUser);
+
+        expect(res).to.have.status(400);
+        expect(res).to.have.property(`error`);
+        expect(res.body.message).to.be.eql(`Email is already in use!`);
+      });
+    });
+
     describe(`Check successful registered user`, () => {
-      it(`6 - should create a peep that is properly formed`, async () => {
+      it(`8 - should create a peep that is properly formed`, async () => {
         let newUser = {
           firstName: "Emma",
           lastName: "Parker",
