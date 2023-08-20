@@ -91,5 +91,19 @@ describe(`Testing requests on the User Login`, () => {
         expect(res.body.message).to.be.eql(`User password incorrect!`);
       });
     });
+
+    describe(`Check successful logged in user`, () => {
+      it(`5 - should login in the user with correct email and password`, async () => {
+        let user = {
+          email: "emma.parker.test@mail.com",
+          password: "X#9cFp$2Ks",
+        };
+
+        const res = await testServer.post(`/login`).send(user);
+        expect(res).to.have.status(200);
+        expect(res.body.userId).to.be.string;
+        expect(res.body.message).to.eql("User login successful");
+      });
+    });
   });
 });
