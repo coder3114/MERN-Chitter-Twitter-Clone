@@ -1,12 +1,11 @@
-const Navbar = () => {
+const Footer = () => {
   return (
-    <div>
-      <footer>
-        <p>© DF-Chitter 2023</p>
-      </footer>
-      ;
+    <div
+      className="bg-primary text-white text-center fixed-bottom"
+      style={{ fontSize: 13 }}>
+      <footer>© DF-Chitter 2023 | Created by Enqi Yang</footer>
     </div>
   );
 };
 
-export default Navbar;
+export default Footer;
