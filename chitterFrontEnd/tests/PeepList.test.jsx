@@ -15,4 +15,18 @@ describe("PeepList tests", () => {
     const rows = await screen.findAllByText(/Sample Peep/i);
     expect(rows.length).toBe(4);
   });
+
+  test(`it should render a message when no peeps are returned from the server without an error`, async () => {
+    const noPeep = [];
+    render(
+      <MemoryRouter>
+        <PeepList peepList={noPeep} />
+      </MemoryRouter>
+    );
+
+    const rows = await screen.findByText(
+      /There are no peeps previously stored. Start posting!/i
+    );
+    expect(rows).toBeInTheDocument();
+  });
 });
