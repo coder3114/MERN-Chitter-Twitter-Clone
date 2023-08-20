@@ -21,7 +21,7 @@ describe(`Peep Component`, () => {
     expect(screen.getByText("Post")).toBeInTheDocument();
   });
 
-  test(" should disables the submit button when the peep text is empty", () => {
+  test("should disable the submit button when the peep text is empty", () => {
     const submitAction = vi.fn();
     const userId = "user123";
 
@@ -37,5 +37,16 @@ describe(`Peep Component`, () => {
     fireEvent.change(input, { target: { value: "Test peep text" } });
 
     expect(submitButton).not.toBeDisabled();
+  });
+
+  test("should render a message when the user is not logged in", () => {
+    const submitAction = vi.fn();
+    const userId = "";
+
+    const { getByText } = render(
+      <PostPeepForm submitAction={submitAction} userId={userId} />
+    );
+
+    expect(getByText("Logged in users can post peeps!")).toBeInTheDocument();
   });
 });
