@@ -63,4 +63,74 @@ describe("External Data Tests", () => {
       });
     });
   });
+
+  describe("getPeeps tests", () => {
+    describe("Normal data returned", () => {
+      const status = 200;
+      const expectedReturn = { peeps: samplePeeps, status: status };
+      const resolvedRequestWithData = { data: samplePeeps, status: status };
+
+      beforeEach(async () => {
+        axiosMock.get.mockResolvedValueOnce(resolvedRequestWithData);
+        functionResult = await api.getPeeps();
+      });
+
+      test("should make a get request via axios", () => {
+        expect(axiosMock.get).toHaveBeenCalledTimes(1);
+        expect(axiosMock.get).toHaveBeenCalledWith(
+          `${import.meta.env.VITE_PEEPSURL}/peeps`
+        );
+      });
+
+      test("should return sample peeps when valid data is returned from server", () => {
+        expect(functionResult).toStrictEqual(expectedReturn);
+      });
+    });
+
+    describe("Empty array returned", () => {
+      test("should call return an empty array and no peeps error message when empty array is returned from server", async () => {
+        const status = 204;
+        const message = `Data not available from the server: There are no peeps to retrieve, please post one`;
+        const returnedError = {
+          peeps: [],
+          status: status,
+          error: {
+            type: `get`,
+            message: message,
+          },
+        };
+
+        axiosMock.get.mockResolvedValueOnce({
+          data: [],
+          status: status,
+          message: message,
+        });
+        functionResult = await api.getPeeps();
+
+        expect(functionResult).toStrictEqual(returnedError);
+      });
+    });
+
+    describe("Error returned", () => {
+      test("should return appropriate error message when error is returned from server", async () => {
+        const status = 400;
+        const message = `Data not available from the server: ${testError.message}`;
+        const expectedReturn = {
+          peeps: [],
+          status: status,
+          error: {
+            type: `get`,
+            message,
+          },
+        };
+
+        axiosMock.get.mockRejectedValueOnce({
+          response: { status: status, message: `Test Error` },
+        });
+        functionResult = await api.getPeeps();
+
+        expect(functionResult).toStrictEqual(expectedReturn);
+      });
+    });
+  });
 });
