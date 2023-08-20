@@ -44,4 +44,19 @@ export const loginUser = async (req, res) => {
       .status(422)
       .json({ message: `Validation failed, please check input!` });
   }
+
+  const { email, password } = req.body;
+
+  const existingUser = await UserModel.findOne({
+    email: email,
+  });
+  if (!existingUser) {
+    return res
+      .status(401)
+      .json({ message: `No accounts with this email address!` });
+  }
+
+  if (existingUser.password != password) {
+    res.status(401).json({ message: `User password incorrect!` });
+  }
 };
