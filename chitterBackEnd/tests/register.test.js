@@ -102,5 +102,23 @@ describe(`Testing requests on the User Register`, () => {
         expect(res.body.message).to.be.eql(validationErrorMessage);
       });
     });
+
+    describe(`Check successful registered user`, () => {
+      it(`6 - should create a peep that is properly formed`, async () => {
+        let newUser = {
+          firstName: "Emma",
+          lastName: "Parker",
+          username: "testing",
+          email: "testing@mail.com",
+          password: "password123",
+        };
+
+        const res = await testServer.post(`/register`).send(newUser);
+        expect(res).to.have.status(201);
+        expect(res.body.user).to.be.an(`object`);
+        expect(res.body.user).to.have.property(`username`);
+        expect(res.body.message).to.eql("User registration successful");
+      });
+    });
   });
 });
