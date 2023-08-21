@@ -48,15 +48,14 @@ describe("External Data Tests", () => {
     describe("Unsuccessful POST requests", () => {
       test("should return an error property in the response when unsuccessful POST is made", async () => {
         const status = 400;
-        const expectedResponse = {
-          response: { status: status, message: testError.message },
-        };
         const expectedReturn = {
           status: status,
           error: { type: `post`, message: testError.message },
         };
 
-        axiosMock.post.mockRejectedValueOnce(expectedResponse);
+        axiosMock.post.mockRejectedValueOnce({
+          response: { status: status, data: { message: testError.message } },
+        });
         functionResult = await api.registerUser(testNewUser);
 
         expect(functionResult).toStrictEqual(expectedReturn);
@@ -109,7 +108,7 @@ describe("External Data Tests", () => {
       test("should return an error property in the response when unsuccessful POST is made", async () => {
         const status = 400;
         const expectedResponse = {
-          response: { status: status, message: testError.message },
+          response: { status: status, data: { message: testError.message } },
         };
         const expectedReturn = {
           status: status,

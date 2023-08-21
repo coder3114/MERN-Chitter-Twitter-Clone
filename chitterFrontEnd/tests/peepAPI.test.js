@@ -33,7 +33,7 @@ describe("External Data Tests", () => {
     });
 
     describe("Successful POST requests", () => {
-      test('should return "Todo added" with 201 status on success', async () => {
+      test("should return peep added with 201 status on success", async () => {
         const status = 201;
         const expectedResponse = { data: testNewPeep, status: status };
         const expectedReturn = { peep: testNewPeep, status: status };
@@ -125,7 +125,7 @@ describe("External Data Tests", () => {
         };
 
         axiosMock.get.mockRejectedValueOnce({
-          response: { status: status, message: `Test Error` },
+          response: { status: status, data: { message: `Test Error` } },
         });
         functionResult = await api.getPeeps();
 

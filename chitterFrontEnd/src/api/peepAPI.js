@@ -12,7 +12,7 @@ export const submitPeep = async (peep) => {
       status: e.response?.status,
       error: {
         type: `post`,
-        message: e.response?.message,
+        message: e.response?.data ?? e.response?.message,
       },
     };
   }
@@ -22,7 +22,6 @@ export const getPeeps = async () => {
   try {
     const res = await axios.get(`${import.meta.env.VITE_PEEPSURL}/peeps`);
     if (Array.isArray(res.data) && res.data?.length > 0) {
-      console.log(res.data);
       return { peepList: res.data, status: res.status };
     }
     throw new Error(`There are no peeps to retrieve, please post one`);
@@ -33,7 +32,7 @@ export const getPeeps = async () => {
       error: {
         type: `get`,
         message: `Data not available from the server: ${
-          e.message ?? e.response.message
+          e.message ?? e.response?.data.message
         }`,
       },
     };
