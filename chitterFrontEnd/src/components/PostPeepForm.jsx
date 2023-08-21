@@ -19,13 +19,14 @@ const PostPeepForm = ({ submitAction, userId }) => {
       <div className="container mt-5 mb-4">
         <div className="row justify-content-center ">
           <div className="card col-md-6">
-            <div className="card-body" data-testid="post-peep-form">
-              <form onSubmit={handlePeepSubmit}>
+            <div className="card-body">
+              <form data-testid="post-peep-form" onSubmit={handlePeepSubmit}>
                 <div className="post-peep-form">
                   <input
                     className="form-control"
                     type="text"
                     name="peepText"
+                    data-testid="peepContentInput"
                     value={peepText}
                     placeholder="What's happening..."
                     onChange={(event) => setPeepText(event.target.value)}
@@ -34,7 +35,7 @@ const PostPeepForm = ({ submitAction, userId }) => {
                 <div
                   className="card-text mt-2 mb-2 text-muted"
                   style={{ fontSize: 12 }}>
-                  <label title="peepTimePosted">
+                  <label title="peepTimePosted" data-testid="peepTimeInput">
                     <TimePosted
                       updateDateCreated={(dateCreated) =>
                         setPeepTimePosted(dateCreated)

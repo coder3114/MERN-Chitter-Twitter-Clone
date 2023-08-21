@@ -25,12 +25,14 @@ describe(`Peep Component`, () => {
     const submitAction = vi.fn();
     const userId = "user123";
 
-    const { getByText, getByPlaceholderText } = render(
-      <PostPeepForm submitAction={submitAction} userId={userId} />
+    render(
+      <MemoryRouter>
+        <PostPeepForm submitAction={submitAction} userId={userId} />
+      </MemoryRouter>
     );
 
-    const input = getByPlaceholderText("What's happening...");
-    const submitButton = getByText("Post");
+    const input = screen.getByPlaceholderText("What's happening...");
+    const submitButton = screen.getByText("Post");
 
     expect(submitButton).toBeDisabled();
 
@@ -43,10 +45,33 @@ describe(`Peep Component`, () => {
     const submitAction = vi.fn();
     const userId = "";
 
-    const { getByText } = render(
-      <PostPeepForm submitAction={submitAction} userId={userId} />
+    render(
+      <MemoryRouter>
+        <PostPeepForm submitAction={submitAction} userId={userId} />
+      </MemoryRouter>
+    );
+    expect(
+      screen.getByText("Logged in users can post peeps!")
+    ).toBeInTheDocument();
+  });
+
+  test("should call submitAction and submit the form data correctly", () => {
+    const submitAction = vi.fn();
+    const userId = "user123";
+
+    render(
+      <MemoryRouter>
+        <PostPeepForm submitAction={submitAction} userId={userId} />
+      </MemoryRouter>
     );
 
-    expect(getByText("Logged in users can post peeps!")).toBeInTheDocument();
+    const peepContentInput = screen.getByTestId("peepContentInput");
+    fireEvent.change(peepContentInput, { target: { value: "Hello, world!" } });
+
+    const form = screen.getByTestId("post-peep-form");
+    fireEvent.submit(form);
+
+    expect(submitAction).toHaveBeenCalledOnce();
+    expect(peepContentInput.value).toBe("");
   });
 });
