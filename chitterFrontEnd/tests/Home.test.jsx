@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
+import { describe, expect, test, beforeEach } from "vitest";
 
-import { describe, test, expect, beforeEach, fireEvent } from "vitest";
 import Home from "../src/Pages/HomePage.jsx";
 
 vi.mock("../Components/utils/Peep.model.js", () => {
@@ -31,11 +32,13 @@ describe("Home Component", () => {
 
   beforeEach(() => {
     render(
-      <Home
-        submitAction={mockSubmitAction}
-        peepList={mockPeepList}
-        userId={mockUserId}
-      />
+      <MemoryRouter>
+        <Home
+          submitAction={mockSubmitAction}
+          peepList={mockPeepList}
+          userId={mockUserId}
+        />
+      </MemoryRouter>
     );
   });
 
@@ -46,16 +49,14 @@ describe("Home Component", () => {
 
   test("should submit a peep when the form is filled out and submitted", async () => {
     const peepText = "Test peep";
-    // await fireEvent.input(
-    //   screen.getByPlaceholderText("What's happening..."),
-    //   peepText
-    // );
-    // await fireEvent.click(screen.getByText("Post"));
 
-    // expect(mockSubmitAction).toHaveBeenCalled();
-    // const calledArgs = mockSubmitAction.calls[0][0];
-    // expect(calledArgs.userId).toBe(mockUserId);
-    // expect(calledArgs.content).toBe(peepText);
+    const peepContentInput = screen.getByTestId("peepContentInput");
+    fireEvent.change(peepContentInput, { target: { value: peepText } });
+
+    const form = screen.getByTestId("post-peep-form");
+    fireEvent.submit(form);
+
+    expect(mockSubmitAction).toHaveBeenCalled();
   });
 
   test("should display peep data in PeepList", () => {
