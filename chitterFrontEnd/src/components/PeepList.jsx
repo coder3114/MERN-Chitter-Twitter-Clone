@@ -11,11 +11,14 @@ export default function PeepList({ peepList }) {
       });
       return displayPeeps;
     }
+
+    if (peepList?.length === 0)
+      return <div>There are no peeps previously stored. Start posting!</div>;
   };
 
   return (
     <div className="container mt-2">
-      <div>{populatePeepList()}</div>
+      <div data-testid="peep-list">{populatePeepList()}</div>
     </div>
   );
 }

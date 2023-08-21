@@ -21,8 +21,10 @@ export const submitPeep = async (peep) => {
 export const getPeeps = async () => {
   try {
     const res = await axios.get(`${import.meta.env.VITE_PEEPSURL}/peeps`);
-    if (Array.isArray(res.data) && res.data?.length > 0)
-      return { peeps: res.data, status: res.status };
+    if (Array.isArray(res.data) && res.data?.length > 0) {
+      console.log(res.data);
+      return { peepList: res.data, status: res.status };
+    }
     throw new Error(`There are no peeps to retrieve, please post one`);
   } catch (e) {
     return {

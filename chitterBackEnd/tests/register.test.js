@@ -5,9 +5,7 @@ import { expect } from "chai";
 import chaiHttp from "chai-http";
 
 import server from "../server.js";
-import testData from "./testData/sampleData.js";
 
-const testUsersArray = testData.users;
 const validationErrorMessage = `Validation failed, please check input!`;
 
 chai.use(chaiHttp);

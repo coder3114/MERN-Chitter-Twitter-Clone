@@ -5,7 +5,7 @@ import { describe, expect, test } from "vitest";
 import PeepList from "../src/Components/PeepList.jsx";
 import samplePeeps from "./testData/peeps.json";
 
-describe("PeepList tests", () => {
+describe("PeepList Component", () => {
   test(`it should render the correct number of Todo components based on the todo array supplied`, async () => {
     render(
       <MemoryRouter>

@@ -67,7 +67,7 @@ describe("External Data Tests", () => {
   describe("getPeeps tests", () => {
     describe("Normal data returned", () => {
       const status = 200;
-      const expectedReturn = { peeps: samplePeeps, status: status };
+      const expectedReturn = { peepList: samplePeeps, status: status };
       const resolvedRequestWithData = { data: samplePeeps, status: status };
 
       beforeEach(async () => {

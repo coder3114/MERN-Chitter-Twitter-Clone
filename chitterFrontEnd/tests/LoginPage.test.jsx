@@ -3,7 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import LoginPage from "../src/Pages/LoginPage.jsx";
 
-describe("Login Component", () => {
+describe("Login Page", () => {
   test("should render the form elements correctly", async () => {
     const submitAction = vi.fn();
 
@@ -22,7 +22,7 @@ describe("Login Component", () => {
     expect(screen.getByPlaceholderText("Password")).toBeInTheDocument();
   });
 
-  test("calls submitAction when the form is submitted", () => {
+  test("should call submitAction when the form is submitted", () => {
     const submitAction = vi.fn();
 
     render(

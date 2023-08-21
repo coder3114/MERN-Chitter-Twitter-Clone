@@ -19,9 +19,9 @@ const PostPeepForm = ({ submitAction, userId }) => {
       <div className="container mt-5 mb-4">
         <div className="row justify-content-center ">
           <div className="card col-md-6">
-            <div className="card-body">
+            <div className="card-body" data-testid="post-peep-form">
               <form onSubmit={handlePeepSubmit}>
-                <div className="post-peep-form ">
+                <div className="post-peep-form">
                   <input
                     className="form-control"
                     type="text"

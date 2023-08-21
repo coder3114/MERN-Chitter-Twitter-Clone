@@ -24,9 +24,7 @@ const testData = {
 
   users: [
     {
-      _id: {
-        $oid: "64e1dd52a2a47961bdbeb025",
-      },
+      _id: "64e1dd52a2a47961bdbeb025",
       firstName: "Emma",
       lastName: "Parker",
       username: "TestBuddy",
@@ -34,9 +32,7 @@ const testData = {
       password: "X#9cFp$2Ks",
     },
     {
-      _id: {
-        $oid: "64e1dd52a2a47961bdbeb026",
-      },
+      _id: "64e1dd52a2a47961bdbeb026",
       firstName: "Olivia",
       lastName: "Gray",
       username: "App_Check",
@@ -44,9 +40,7 @@ const testData = {
       password: "P@5mGtR7Qw",
     },
     {
-      _id: {
-        $oid: "64e1dd52a2a47961bdbeb027",
-      },
+      _id: "64e1dd52a2a47961bdbeb027",
       firstName: "Ava",
       lastName: "Cooper",
       username: "Bug-Catcher",
@@ -54,9 +48,7 @@ const testData = {
       password: "B^3hVz*6Ln",
     },
     {
-      _id: {
-        $oid: "64e1dd52a2a47961bdbeb028",
-      },
+      _id: "64e1dd52a2a47961bdbeb028",
       firstName: "Noah",
       lastName: "Morgan",
       username: "likeChitter",
