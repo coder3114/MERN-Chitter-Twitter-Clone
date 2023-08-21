@@ -88,7 +88,7 @@ describe("External Data Tests", () => {
     });
 
     describe("Empty array returned", () => {
-      test("should call return an empty array and no peeps error message when empty array is returned from server", async () => {
+      test("should return an empty array and no peeps error message when empty array is returned from server", async () => {
         const status = 204;
         const message = `Data not available from the server: There are no peeps to retrieve, please post one`;
         const returnedError = {

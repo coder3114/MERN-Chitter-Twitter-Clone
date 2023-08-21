@@ -8,7 +8,6 @@ export const registerUser = async (user) => {
     );
     return { user: res.data, status: res.status };
   } catch (e) {
-    console.log(e);
     return {
       status: e.response?.status,
       error: {

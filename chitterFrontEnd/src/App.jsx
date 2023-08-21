@@ -39,7 +39,6 @@ function App() {
     const peepList = externalDataCallResult?.peepList
       ? externalDataCallResult.peepList
       : [];
-    console.log(peepList);
     setPeeps(peepList);
   };
 
