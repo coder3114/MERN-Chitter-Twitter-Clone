@@ -24,7 +24,7 @@ export const registerUser = async (req, res) => {
     email: email,
   });
   if (existingUserWithEmail) {
-    return res.status(400).json({ message: `Email is already in use!` });
+    return res.status(400).send({ message: `Email is already in use!` });
   }
 
   try {

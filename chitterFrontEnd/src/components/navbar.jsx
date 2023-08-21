@@ -12,6 +12,7 @@ const Navbar = ({ isLoggedIn, logoutHandler }) => {
         <button
           className="btn btn-light my-2 my-sm-0"
           type="button"
+          data-testid="Logout"
           onClick={logoutHandler}>
           Logout
         </button>
@@ -22,12 +23,14 @@ const Navbar = ({ isLoggedIn, logoutHandler }) => {
           <button
             className="btn btn-light my-2 my-sm-0 mr-2"
             type="button"
+            data-testid="Register"
             onClick={navigateToRegister}>
             Register
           </button>
           <button
             className="btn btn-light my-2 my-sm-0"
             type="button"
+            data-testid="Login"
             onClick={navigateToLogin}>
             Login
           </button>
