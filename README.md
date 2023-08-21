@@ -1,14 +1,6 @@
 # Chitter - Twitter Clone
 
-Chitter is a simplified Twitter clone that allows users to post messages (peeps) to a public wall. It's a full-stack web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack.
-
-#### Table of Contents
-
-- [Features](#Features)
-- [Technologies Used](#Technologies-Used)
-- [Usage](#Usage)
-- [License](#Acknowledgement)
-- [Contact](#Further-Improvement)
+Chitter is a simplified [Twitter](https://twitter.com/) clone that allows users to post messages (peeps) to a public wall. It's a full-stack web application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack.
 
 ![Welcome-to-Chitter](chitterFrontEnd/src/images/login-successful.png)
 
@@ -36,8 +28,8 @@ Trainee software engineers can sign up for Chitter with their email, password, n
 ![register](chitterFrontEnd/src/images/register.png)
 
 <div style="display: flex; flex-direction: row;">
-<img src="chitterFrontEnd\src\images\email-inuse.png" alt="Email in use" width="50%" /> | 
-<img src="chitterFrontEnd\src\images\username-inuse.png" alt="username in use" width="50%" />
+<img src="chitterFrontEnd\src\images\email-inuse.png" alt="Email in use" width="45%" /> | 
+<img src="chitterFrontEnd\src\images\username-inuse.png" alt="username in use" width="45%" />
 </div>
 
 #### User Authentication:
@@ -47,8 +39,8 @@ Registered users can log in to Chitter to post messages with the right email and
 ![login](chitterFrontEnd/src/images/login.png)
 
 <div style="display: flex; flex-direction: row;">
-<img src="chitterFrontEnd\src\images\wrong-email-login.png" alt="Wrong Email" width="50%" /> | 
-<img src="chitterFrontEnd\src\images\wrong-pw-login.png" alt="Wrong Password" width="50%" />
+<img src="chitterFrontEnd\src\images\wrong-email-login.png" alt="Wrong Email" width="45%" /> | 
+<img src="chitterFrontEnd\src\images\wrong-pw-login.png" alt="Wrong Password" width="45%" />
 </div>
 
 #### User Logout:
