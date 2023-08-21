@@ -34,7 +34,7 @@ export const loginUser = async (user) => {
       status: e.response?.status,
       error: {
         type: `post`,
-        message: e.response?.message,
+        message: e.response?.data.message,
       },
     };
   }
