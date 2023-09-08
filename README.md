@@ -8,14 +8,10 @@ Chitter is a simplified [Twitter](https://twitter.com/) clone that allows users 
 
 #### View Peeps:
 
-Users can view all peeps in reverse chronological order without the need to log in.
-![view-peeps](chitterFrontEnd/src/images/no-login-page.png)
-
 #### Post Peeps:
 
 Registered users can post messages to share their thoughts or updates. The peep will be display once it's posted
 
-![post-peep](chitterFrontEnd/src/images/post.png)
 
 #### Timestamps:
 
@@ -25,29 +21,14 @@ Peeps display the time at which they were created.
 
 Trainee software engineers can sign up for Chitter with their email, password, name, and username. Email and username must be unique.
 
-![register](chitterFrontEnd/src/images/register.png)
-
-<div style="display: flex; flex-direction: row;">
-<img src="chitterFrontEnd\src\images\email-inuse.png" alt="Email in use" width="45%" /> | 
-<img src="chitterFrontEnd\src\images\username-inuse.png" alt="username in use" width="45%" />
-</div>
-
 #### User Authentication:
 
 Registered users can log in to Chitter to post messages with the right email and password.
-
-![login](chitterFrontEnd/src/images/login.png)
-
-<div style="display: flex; flex-direction: row;">
-<img src="chitterFrontEnd\src\images\wrong-email-login.png" alt="Wrong Email" width="45%" /> | 
-<img src="chitterFrontEnd\src\images\wrong-pw-login.png" alt="Wrong Password" width="45%" />
-</div>
 
 #### User Logout:
 
 Users can log out of their Chitter accounts.
 
-![logout](chitterFrontEnd/src/images/logout.png)
 
 ## Technologies Used
 
